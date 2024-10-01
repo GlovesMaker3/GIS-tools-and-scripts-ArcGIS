@@ -351,21 +351,34 @@ class Tool(object):
                 pola_do_zachowania = self.get_fields_to_keep(technology)
                 pola_do_usuniecia = self.get_fields_to_remove(path_output_feature_class_MV, pola_do_zachowania)
 
-                arcpy.management.AddField(path_output_feature_class_MV, "Styl", "DOUBLE")
-                self.update_field_styl(path_output_feature_class_MV, f"{letter[:]}ELL_NAME", "Styl")
+                arcpy.management.AddField(path_output_feature_class_MV, "styl", "SHORT")
+                self.update_field_styl(path_output_feature_class_MV, f"{letter[:]}ELL_NAME", "styl")
 
             def remove_after_hash(value):
                 return value.split('#')[0] if '#' in value else value
+
+            #przez to, ze dostajemy rozne dane to kolumny sie czasami roznia przewqaznie jest to TX_ID ale zdarzają się wyjątki
+            def get_column_name(table, possible_names):
+                for name in possible_names:
+                    if name in [field.name for field in arcpy.ListFields(table)]:
+                        arcpy.AddMessage(f'pola - sprawdzanie czy jest TX_ID CZY Transmitte')
+                        arcpy.AddMessage(f'Tym razem masz dla warstwy shp C-BANDA lub DSS kolumne o nazwie: {name}')
+                        return name
+                return None
+
+            possible_column_names = ["TX_ID", "Transmitte"]
 
             if technology in ['DSS', 'CBAND']:
                 field_type = "TEXT" if technology == 'DSS' else "Long"
                 arcpy.management.AddField(lista_sciezek[index], "objj", field_type)
 
+
+                column_name = get_column_name(lista_sciezek[index], possible_column_names)
                 if technology == 'DSS':
                     arcpy.management.CalculateField(
                         lista_sciezek[index],
                         "objj",
-                        "remove_after_hash(!TX_ID!)",
+                        f"remove_after_hash(!{column_name}!)",
                         "PYTHON3",
                         code_block="""def remove_after_hash(value):
                             return value.split('#')[0] if '#' in value else value"""
@@ -398,8 +411,8 @@ class Tool(object):
             pola_do_zachowania = self.get_fields_to_keep(technology)
             pola_do_usuniecia = self.get_fields_to_remove(path_output_feature_class_MV, pola_do_zachowania)
 
-            arcpy.management.AddField(path_output_feature_class_MV, "Styl", "DOUBLE")
-            self.update_field_styl(path_output_feature_class_MV, f"{letter[:]}ELL_NAME", "Styl")
+            arcpy.management.AddField(path_output_feature_class_MV, "styl", "SHORT")
+            self.update_field_styl(path_output_feature_class_MV, f"{letter[:]}ELL_NAME", "styl")
 
 
 
@@ -415,15 +428,15 @@ class Tool(object):
 
     def get_fields_to_keep(self, technology):
         if technology == 'GSM':
-            return ['OBJECTID_1', 'Shape', 'LOC_NAME', 'LOC_OBJ', 'LOC_CODE', 'SITE_NAME', 'SITE_OBJ', 'SITE_CODE', 'CELL_NAME', 'CELL_OBJ', 'CELL_CODE', 'LAC', 'BAND', 'BCCH_CHAN', 'BCC', 'NCC', 'Shape_Length', 'Shape_Area', 'Styl']
+            return ['OBJECTID_1', 'Shape', 'LOC_NAME', 'LOC_OBJ', 'LOC_CODE', 'SITE_NAME', 'SITE_OBJ', 'SITE_CODE', 'CELL_NAME', 'CELL_OBJ', 'CELL_CODE', 'LAC', 'BAND', 'BCCH_CHAN', 'BCC', 'NCC', 'Shape_Length', 'Shape_Area', 'styl']
         elif technology == 'UMTS':
-            return ['OBJECTID_1', 'Shape', 'LOC_NAME', 'LOC_OBJ', 'LOC_CODE', 'WSITE_NAME', 'WSITE_OBJ', 'WSITE_ID', 'WCELL_NAME', 'WCELL_OBJ', 'WCELL_CODE', 'LAC', 'BAND', 'PSC', 'Shape_Length', 'Shape_Area', 'Styl']
+            return ['OBJECTID_1', 'Shape', 'LOC_NAME', 'LOC_OBJ', 'LOC_CODE', 'WSITE_NAME', 'WSITE_OBJ', 'WSITE_ID', 'WCELL_NAME', 'WCELL_OBJ', 'WCELL_CODE', 'LAC', 'BAND', 'PSC', 'Shape_Length', 'Shape_Area', 'styl']
         elif technology == 'LTE':
-            return ['OBJECTID_1', 'Shape', 'LOC_OBJ', 'LOC_CODE', 'LSITE_NAME', 'LSITE_OBJ', 'LSITE_ID', 'LCELL_NAME', 'LCELL_OBJ', 'LCELL_ID', 'NAME', 'PCI', 'Shape_Length', 'Shape_Area', 'Styl']
+            return ['OBJECTID_1', 'Shape', 'LOC_OBJ', 'LOC_CODE', 'LSITE_NAME', 'LSITE_OBJ', 'LSITE_ID', 'LCELL_NAME', 'LCELL_OBJ', 'LCELL_ID', 'NAME', 'PCI', 'Shape_Length', 'Shape_Area', 'styl']
         elif technology == "DSS":
-            return ['OBJECTID_1', 'Shape', 'LOC_OBJ', 'LOC_CODE', 'GSITE_NAME', 'GSITE_OBJ', 'GSITE_ID', 'GCELL_NAME', 'GCELL_OBJ', 'GCELL_ID', 'LTE2100_SHARED', 'LCELL_NAME', 'LOC_NAME', 'Shape_Length', 'Shape_Area', 'Styl']
+            return ['OBJECTID_1', 'Shape', 'LOC_OBJ', 'LOC_CODE', 'GSITE_NAME', 'GSITE_OBJ', 'GSITE_ID', 'GCELL_NAME', 'GCELL_OBJ', 'GCELL_ID', 'LTE2100_SHARED', 'LCELL_NAME', 'LOC_NAME', 'Shape_Length', 'Shape_Area', 'styl']
         elif technology == "CBAND":
-            return ['OBJECTID_1', 'Shape', 'LOC_OBJ', 'LOC_CODE', 'GSITE_NAME', 'GSITE_OBJ', 'GSITE_ID', 'GCELL_NAME', 'GCELL_OBJ', 'GCELL_ID', 'NAME', 'PCI', 'Shape_Length', 'Shape_Area', 'Styl']
+            return ['OBJECTID_1', 'Shape', 'LOC_OBJ', 'LOC_CODE', 'GSITE_NAME', 'GSITE_OBJ', 'GSITE_ID', 'GCELL_NAME', 'GCELL_OBJ', 'GCELL_ID', 'NAME', 'PCI', 'Shape_Length', 'Shape_Area', 'styl']
         else:
             return []
 
@@ -438,7 +451,7 @@ class Tool(object):
         return pola_do_usuniecia
 ########################### nie kasować ############################################
 
-#     # NOWA - DO PRZETESTOWANIA
+#     # NOWA - DO PRZETESTOWANIA - dokładnie takie same nazwy kolumn
 #     def get_fields_to_remove(self, path_feature_class, pola_do_zachowania):
 #         pola_do_usuniecia = []
 #         lista_pól = arcpy.ListFields(path_feature_class)
@@ -533,7 +546,9 @@ class Tool(object):
             arcpy.AddMessage(f'-------------------------------')
             arcpy.AddMessage(f'-------------------------------')
 
-
+    def has_coordinate_system(self, raster_path):
+        desc = arcpy.Describe(raster_path)
+        return desc.spatialReference is not None
 
 # execute #############################################################################################################################################################################################################################################
     def execute(self, parameters, messages):
@@ -642,7 +657,7 @@ class Tool(object):
             lista_3 = arcpy.ListTables('*_przeciazone_lte*')
 
             # Filtrowanie tabel, które nie kończą się na "_a" ani "_lte700"
-            przeciazenia = [table for table in lista_3 if not (table.endswith("_a") or table.endswith("_lte700"))]
+            przeciazenia = [table for table in lista_3 if not (table.endswith("_a") or table.endswith("_lte700") or table.endswith("lte900_3857_table"))]
             arcpy.AddMessage(f'-------------------------------')
             arcpy.AddMessage(f'-------------------------------825')
             arcpy.AddMessage('---------------------- TEST NA DZIAŁANIE ----------------------')
@@ -712,14 +727,18 @@ class Tool(object):
                     arcpy.AddMessage(fr'przeciazenie_{common}')
 
             # Ustal nazwy kolumn, które chcesz zachować
-            kolumny_do_zachowania = ["OBJECTID", "Shape", "LCELL_NAME", "Shape_Length", "Shape_Area"]
+
+            kolumny_do_zachowania = ["OBJECTID", "OBJECTID_1", "Shape", "LCELL_NAME", "Shape_Length", "Shape_Area"]
 
             # Tworzymy listę, która będzie zawierać wszystkie elementy, które będą do skasowania
             lista_do_skasowania = []
 
 ####################################################JESLI PUSZCZAM KOD BEZ PARAMETROW##############################################################################################
-            arcpy.AddMessage(f'-------------TEST linia 802------------------')
+#             arcpy.AddMessage(f'-------------TEST linia 802------------------')
             lista_5 = arcpy.ListFields(output_feature_class_przeciazenia)
+#             xx = r'D:\ArcGIS\0_Dane_Zasiegowe_DONE\2024_06\2024_06_MV.gdb\przeciazenie_LTE900'
+#
+#             lista_5 = arcpy.ListFields(xx)
 ####################################################JESLI PUSZCZAM KOD BEZ PARAMETROW##############################################################################################
 
 
@@ -746,14 +765,12 @@ class Tool(object):
             for warstwa in lista_przeciazone:
 
                 arcpy.AddMessage(f'Kasowanie kolumn dla: {warstwa}')
-                arcpy.management.DeleteField(warstwa, lista_do_skasowania)
+                arcpy.management.DeleteField(fr'{output_MV}\{warstwa}', lista_do_skasowania)
                 arcpy.AddMessage(f'-------------------------------')
                 arcpy.AddMessage(f'-------------------------------839')
                 arcpy.AddMessage(f'Done: {warstwa}')
                 arcpy.AddMessage(f'-------------------------------')
                 arcpy.AddMessage(f'-------------------------------')
-
-
 
             arcpy.AddMessage('---------------------- KONIEC CZESCI IV - Przeciązenia dla LTE ----------------------')
             arcpy.AddMessage(f'^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^')
@@ -875,11 +892,33 @@ class Tool(object):
                 arcpy.env.outputCoordinateSystem = _path_wgs84_
                 arcpy.management.BuildPyramids(r, -1, "NONE", "NEAREST", "LZ77", 50, "SKIP_EXISTING")
 
-                #arcpy.env.outputCoordinateSystem = _path_92_
+                arcpy.env.outputCoordinateSystem = _path_92_
+
+#                 arcpy.AddMessage(fr'{_wczytanie_danych_}\{r}')
+#                 arcpy.AddMessage(fr'{_wczytanie_danych_}\\Rastry_PUWG_92\\{r}')
+#                 arcpy.AddMessage(_path_92_)
+# tu coś jest do poprawy
+#                 # Sprawdzenie, czy rastry mają zdefiniowany układ współrzędnych
+#                 if self.has_coordinate_system(fr'{_wczytanie_danych_}\\{r}'):
+#                     arcpy.AddMessage(f"Rastr {r} ma zdefiniowany układ współrzędnych.")
+#                 else:
+#                     arcpy.AddMessage(f"Raster {r} nie ma zdefiniowanego układu współrzędnych.")
+#                   if self.has_coordinate_system(fr'{_wczytanie_danych_}\\{r}'):
+#                                 arcpy.AddMessage(f"Rastr {r} ma zdefiniowany układ współrzędnych.")
+#                             else:
+#                                 arcpy.AddError(f"Raster {r} nie ma zdefiniowanego układu współrzędnych.")
+#                                 sys.exit("Przerwano wykonanie skryptu z powodu braku zdefiniowanego układu współrzędnych.")
+#
+#                             try:
+#                                 arcpy.management.ProjectRaster(fr'{_wczytanie_danych_}\\{r}', fr'{_wczytanie_danych_}\\Rastry_PUWG_92\\{r}', _path_92_)
+#                                 arcpy.AddMessage(f'---------------------- Rastr ---- {r} ---- zamieniony na PUWG92 ----------------------')
+#                             except arcpy.ExecuteError:
+#                                 arcpy.AddError("Wystąpił błąd podczas przetwarzania rastra.")
+#                                 sys.exit("Przerwano wykonanie skryptu z powodu błędu podczas przetwarzania rastra.")
 
 
 
-                arcpy.management.ProjectRaster(fr'{_wczytanie_danych_}\{r}', fr'{_wczytanie_danych_}\\Rastry_PUWG_92\\{r}', _path_92_)
+                arcpy.management.ProjectRaster(fr'{_wczytanie_danych_}\\{r}', fr'{_wczytanie_danych_}\\Rastry_PUWG_92\\{r}', _path_92_)
 
                 arcpy.AddMessage(f'---------------------- Rastr ---- {r} ---- zamieniony na PUWG92 ----------------------')
 
@@ -940,14 +979,14 @@ class Tool(object):
 
             arcpy.env.workspace = output_MV
             feature_classes = arcpy.ListFeatureClasses('*_MV')
-            arcpy.AddMessage(f'Warstwy do kasowania pola Styl: {feature_classes}')
+            arcpy.AddMessage(f'Warstwy do kasowania pola Styl w geobazie MV - Kolumny styl zostają w geobazie_3857: {feature_classes}')
             # Loop through each feature class and delete the "style" field
             for fc in feature_classes:
                 fields = arcpy.ListFields(fc)
                 for field in fields:
-                    if field.name == "Styl":
-                        arcpy.DeleteField_management(fc, "Styl")
-                        arcpy.AddMessage(f"Deleted 'style' field from {fc}")
+                    if field.name == "styl":
+                        arcpy.DeleteField_management(fc, "styl")
+                        arcpy.AddMessage(f"Deleted 'styl' field from {fc}")
 
         return
 
