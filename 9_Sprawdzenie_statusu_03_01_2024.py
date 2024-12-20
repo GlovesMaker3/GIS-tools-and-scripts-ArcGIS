@@ -10,7 +10,7 @@ from dateutil import parser
 
 # Funkcja do wysyłania e-maila
 def send_email(subject, body, recipient_emails):
-    sender_email = "buchar123@gmail.com"
+    sender_email = "xx@gmail.com"
     email_password = "XX"
     smtp_server = "smtp.gmail.com"
     smtp_port = 587
@@ -103,8 +103,7 @@ while True:
 
         # Wysyłanie e-maila tylko raz dziennie
         if len(email_body_lista) >= 1:
-            recipient_emails = ["buchar123@gmail.com", "daniel.buchar@orange.com", "inez.beszterda@orange.com",
-                                "lukasz.brylak@orange.com"]
+            recipient_emails = ["xx@gmail.com"]
             subject = f"Raport zgodności tabel w pgq_sde.smart.etl_smart na dzień --{today}--"
             body = f"Skrypt sprawdził zgodność wszystkich: --{n}-- tabel, z czego tabel ze statusem 'OK' i aktualną datą jest: --{okej}--\n\n Tabele błędne to:\n{''.join(email_body_lista)}"
             print(body)
