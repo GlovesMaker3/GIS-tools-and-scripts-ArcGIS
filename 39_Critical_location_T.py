@@ -5,10 +5,10 @@ import time
 print('----------------------------------- T-MOBILE ----------------------------------- ')
 
 # Ustaw ścieżkę do źródłowej tabeli
-input_table = r"D:\projekty_aprx\orange_projekty_aprx\2024_02_27_Critical_location\Dane\16_09_2024\16_09_2024.gdb\loc_critical___TMPL_16_09_2024csv"
+input_table = r"xx"
 
 # Ustaw ścieżkę do wynikowej tabeli
-output_gdb = r"D:\projekty_aprx\orange_projekty_aprx\2024_02_27_Critical_location\Dane\16_09_2024\16_09_2024.gdb"
+output_gdb = r"xx"
 
 arcpy.management.AddField(input_table, "AKTUALIZACJA", "DATE")
 arcpy.management.CalculateField(input_table, "AKTUALIZACJA", "time.strftime('%d/%m/%Y')")
@@ -18,10 +18,7 @@ arcpy.env.overwriteOutput = True
 
 # Lista kolumn do wyodrębnienia
 fields = [
-    "MNO_NAME", "PROJECT", "REGION", "LOC_NAME_OPL", "LOC_NETWORKS_NAME", "LOC_NETWORKS_CODE",
-    "CEASE_DATE_PLAN", "DISCONNECT_DATE", "SOLUTION_DATE", "SOLUTION_DATE_PLAN", 
-    "BEST_SOLUTION_PLAN_DATE", "CROSS_TYPE", "AKTUALIZACJA", "LOC_XPOS", "LOC_YPOS", 
-    "LOC_LON84", "LOC_LAT84"
+    "xx", 
 ]
 
 # Klauzula WHERE, która filtruje rekordy
