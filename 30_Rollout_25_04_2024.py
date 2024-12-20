@@ -28,42 +28,7 @@ paths = {
 
 # Lista warstw SDE
 warstwy_SDE = [
-    'pgq_sde.rollout.mv_opl_rollout_priorytety',
-    'pgq_sde.rollout.mv_opl_rollout_priorytety_poz',
-    'pgq_sde.rollout.mv_opl_tmpl_on_air_2021',
-    'pgq_sde.rollout.mv_opl_b_l_2022',
-    'pgq_sde.rollout.mv_opl_tmpl_on_air_2022',
-    'pgq_sde.rollout.mv_opl_tmpl_on_air_2023',
-    'pgq_sde.rollout.mv_opl_b_l_2022i',
-    'pgq_sde.rollout.mv_opl_realizacja',
-    'pgq_sde.rollout.mv_opl_plan_2020',
-    'pgq_sde.rollout.mv_opl_b_l_2019',
-    'pgq_sde.rollout.mv_opl_b_l_2021',
-    'pgq_sde.rollout.mv_opl_tmpl_search',
-    'pgq_sde.rollout.mv_opl_lccs_realizacja',
-    'pgq_sde.rollout.mv_opl_roads_program',
-    'pgq_sde.rollout.mv_opl_lccs_on_air',
-    'pgq_sde.rollout.mv_opl_plan_2021',
-    'pgq_sde.rollout.mv_opl_b_l_on_air_2022',
-    'pgq_sde.rollout.mv_opl_b_l_on_air_2023',
-    'pgq_sde.rollout.mv_opl_b_l_on_air_2024',
-    'pgq_sde.rollout.mv_opl_b_l_on_air',
-    'pgq_sde.rollout.mv_opl_b_l_on_air_spady',
-    'pgq_sde.rollout.mv_opl_b_l_on_air_widok_ogolny',
-    'pgq_sde.rollout.mv_opl_b_l_realizacja',
-    'pgq_sde.rollout.mv_opl_b_l_realizacja_spady',
-    'pgq_sde.rollout.mv_opl_b_l_realizacja_widok_ogolny',
-    'pgq_sde.rollout.mv_opl_b_l_legalizacja',
-    'pgq_sde.rollout.mv_opl_legalizacja',
-    'pgq_sde.rollout.mv_opl_on_air',
-    'pgq_sde.rollout.mv_opl_ongoing',
-    'pgq_sde.rollout.mv_opl_b_l_2025i',
-    'pgq_sde.rollout.mv_opl_rr_opl_infeasible',
-    'pgq_sde.rollout.mv_opl_plan_2022',
-    'pgq_sde.rollout.mv_opl_tmpl_realizacja',
-    'pgq_sde.rollout.mv_opl_tmpl_admit_radio',
-    'pgq_sde.rollout.mv_opl_tmpl_on_air',
-    'pgq_sde.rollout.mv_opl_b_l_2024i'
+    'pgq_sde.rollout.xx
 ]
 
 def sanitize_name(name):
