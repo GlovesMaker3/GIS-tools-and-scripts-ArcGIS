@@ -6,10 +6,10 @@ import os
 # Dane do połączenia z bazą danych
 conn_params = {
     'dbname': 'pgq_sde',
-    'user': 'admin',
-    'password': 'admin',
-    'host': '126.185.136.190',
-    'port': '5432'
+    'user': 'xx',
+    'password': 'xx',
+    'host': 'xx',
+    'port': 'xx'
 }
 
 # Lista warstw do przetworzenia
