@@ -4,10 +4,10 @@ import os
 import time
 
 # Ustaw ścieżkę do źródłowej tabeli
-input_table = r"D:\projekty_aprx\orange_projekty_aprx\2024_02_27_Critical_location\Dane\16_09_2024\16_09_2024.gdb\loc_critical_16_09_2024_CSV"  # Zmień na właściwą ścieżkę
+input_table = r"xx"  # Zmień na właściwą ścieżkę
 
 # Ustaw ścieżkę do wynikowej tabeli (w tym przypadku folder wyjściowy i nazwa pliku wynikowego)
-output_gdb = r"D:\projekty_aprx\orange_projekty_aprx\2024_02_27_Critical_location\Dane\16_09_2024\16_09_2024.gdb"
+output_gdb = r"xx"
 
 arcpy.management.AddField(input_table, "AKTUALIZACJA", "DATE")
 arcpy.management.CalculateField(input_table, "AKTUALIZACJA", "time.strftime('%d/%m/%Y')")
@@ -17,22 +17,8 @@ arcpy.env.overwriteOutput = True
 
 # Lista kolumn do wyodrębnienia
 fields = [
-    "RISK_STATUS",
-    "REGION",
-    "PROJECT",
-    "LOC_OBJ",
-    "LOC_NAME_OPL",
-    "FINAL_REMARKS",
-    "DESC_INV",
-    "CEASE_DATE_PLAN",
-    "DISCONNECT_DATE",
-    "SOLUTION_DATE",
-    "BEST_SOLUTION_PLAN_DATE",
-    "AKTUALIZACJA",
-    "X_POS",
-    "Y_POS",
-    "LON_84",
-    "LAT_84"
+    "xx",
+
 ]
 
 # Klauzula WHERE, która filtruje rekordy
