@@ -12,23 +12,15 @@ logging.debug('Rozpoczęcie skryptu.')
 arcpy.env.overwriteOutput = True
 
 paths = {
-    "sde": r'C:\Users\buchadan\AppData\Roaming\Esri\ArcGISPro\Favorites\126.185.136.190_azymut.sde',
+    "sde": r'C:\\Favorites\xx.sde',
     "_PUWG_92_": r'D:\projections\ETRS 1989 Poland CS92.prj',
     "_WGS_84_": r'D:\projections\WGS 1984 Web Mercator (auxiliary sphere).prj',
-    "geobaza": r'D:\projekty_aprx\orange_projekty_aprx\azymuty\azymuty_t.gdb',
+    "geobaza": r'D:\projekty_aprx\\azymuty_t.gdb',
 }
 
 warstwy = [
-    "mv_azimuth_fdd2100_t",
-    "mv_azimuth_fdd3600_t",
-    "mv_azimuth_gsm",
-    "mv_azimuth_lte800",
-    "mv_azimuth_lte900_t",
-    "mv_azimuth_lte1800",
-    "mv_azimuth_lte2100",
-    "mv_azimuth_lte2600",
-    "mv_azimuth_umts900",
-    "mv_azimuth_umts2100"
+    "mv_azimuth_xx"
+
 ]
 
 
