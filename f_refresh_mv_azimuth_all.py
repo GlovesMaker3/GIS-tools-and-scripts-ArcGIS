@@ -3,7 +3,7 @@ from datetime import datetime
 import logging
 
 # Ustawienie konfiguracji logowania
-logging.basicConfig(filename='D:\\replikacja\\model_builder\\Python_3\\log_f_refresh_mv_azimuth_all.txt', level=logging.DEBUG, format='%(asctime)s:%(levelname)s:%(message)s')
+logging.basicConfig(filename='D:\\xx', level=logging.DEBUG, format='%(asctime)s:%(levelname)s:%(message)s')
 
 # Przykładowe logowanie
 logging.debug('Rozpoczęcie skryptu.')
@@ -27,10 +27,10 @@ def f_refresh_mv_azimuth():
         # Ustal połączenie z bazą danych
         conn = psycopg2.connect(
             dbname="pgq_sde",
-            user="admin",
-            password="admin",
-            host="126.185.136.190",
-            port="5432"
+            user="xx",
+            password="xx",
+            host="xx",
+            port="xx"
         )
         cursor = conn.cursor()
 
