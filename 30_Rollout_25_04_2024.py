@@ -20,7 +20,7 @@ arcpy.env.workspace = r"D:\arcgisserver\mxd\2024_07_22_Rollout\Rollout.sde"
 
 # Definicja ścieżek do SDE, projekcji i bazy geodanych
 paths = {
-    "sde": r'D:\sde\126.185.136.190_rollout.sde',
+    "sde": r'D:\sde\xx.sde',
     "PUWG_92": r'D:\projections\ETRS 1989 Poland CS92.prj',
     "WGS_84": r'D:\projections\WGS 1984 Web Mercator (auxiliary sphere).prj',
     "geobaza": r'D:\projekty_aprx\orange_projekty_aprx\rollout\rollout.gdb',
