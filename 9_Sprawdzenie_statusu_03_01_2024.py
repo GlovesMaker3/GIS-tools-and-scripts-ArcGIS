@@ -30,7 +30,7 @@ def send_email(subject, body, recipient_emails):
 
 
 # Lokalizacja plików
-# arcpy.env.workspace = r"D:\ArcGIS\12_01_2024_Piotr_trocyk_True_5G\admin.sde"
+
 arcpy.env.workspace = r"D:\\ArcGIS\\ArcGIS_baza_SDE\\Admin.sde"
 
 email_body_lista = []
