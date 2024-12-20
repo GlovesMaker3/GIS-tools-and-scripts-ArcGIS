@@ -10,17 +10,8 @@ logging.debug('Rozpoczęcie skryptu.')
 
 def f_refresh_mv_azimuth():
     tables_functions = {
-        'azimuth_fdd2100': 'fc_mv_azimuth_fdd2100',
-        'azimuth_fdd3600': 'fc_mv_azimuth_fdd3600',
-        'azimuth_gsm': 'fc_mv_azimuth_gsm',
-        'azimuth_lte700': 'fc_mv_azimuth_lte700',
-        'azimuth_lte800': 'fc_mv_azimuth_lte800',
-        'azimuth_lte900': 'fc_mv_azimuth_lte900',
-        'azimuth_lte1800': 'fc_mv_azimuth_lte1800',
-        'azimuth_lte2100': 'fc_mv_azimuth_lte2100',
-        'azimuth_lte2600': 'fc_mv_azimuth_lte2600',
-        'azimuth_umts900': 'fc_mv_azimuth_umts900',
-        'azimuth_umts2100': 'fc_mv_azimuth_umts2100'
+        'yy': 'xx',
+
     }
 
     try:
