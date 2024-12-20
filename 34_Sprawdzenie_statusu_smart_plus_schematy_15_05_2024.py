@@ -10,7 +10,7 @@ import time
 
 # Funkcja do wysyłania e-maila
 def send_email(subject, body, recipient_emails):
-    sender_email = "buchar123@gmail.com"
+    sender_email = "xx@gmail.com"
     email_password = "xxx"
     smtp_server = "smtp.gmail.com"
     smtp_port = 587
@@ -29,7 +29,7 @@ def send_email(subject, body, recipient_emails):
         print(f"Błąd podczas wysyłania e-maila: {e}")
 
 
-arcpy.env.workspace = r"D:\\ArcGIS\\ArcGIS_baza_SDE\\Admin.sde"
+arcpy.env.workspace = r"D:\\ArcGIS\\xx.sde"
 
 email_body_lista = []
 total_tables = 0
@@ -69,7 +69,7 @@ while True:
 
 
         if email_body_lista:
-            recipient_emails = ["buchar123@gmail.com", "daniel.buchar@orange.com", "inez.beszterda@orange.com", "lukasz.brylak@orange.com"]
+            recipient_emails = ["xxx.com"]
             subject = f"Raport zgodności tabel w pgq_sde.smart.etl_smart na dzień --{today}-- oraz tabeli stacje_act_geom_3857_table"
             body = f"Skrypt sprawdził zgodność wszystkich: --{total_tables}-- tabel, z czego tabel ze statusem 'OK' i aktualną datą jest: --{okej}--\n\n Tabele błędne to:\n{''.join(email_body_lista)}"
             print(body)
@@ -80,6 +80,6 @@ while True:
         send_email(subject, body, recipient_emails)
         print("E-mail został wysłany.\nNie jesteś podłączony do VPN. Kończę działanie skryptu.")
         break
-#recipient_emails = ["buchar123@gmail.com", "daniel.buchar@orange.com", "inez.beszterda@orange.com", "lukasz.brylak@orange.com"]
+
 
 
