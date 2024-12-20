@@ -533,15 +533,15 @@ class Tool(object):
                     arcpy.AddMessage(f'Przypisanie -- outdoor, in-car, indoor, deep indoor, very deep indoor-- dla pary: {para["Para"]}')
                     for row in cursor:
                         if row[0] == 1:
-                            row[1] = "outdoor"
+                            row[1] = "dd"
                         elif row[0] == 2:
-                            row[1] = "in-car"
+                            row[1] = "aa"
                         elif row[0] == 3:
-                            row[1] = "indoor"
+                            row[1] = "zz"
                         elif row[0] == 4:
-                            row[1] = "deep indoor"
+                            row[1] = "xx"
                         elif row[0] == 5:
-                            row[1] = "very deep indoor"
+                            row[1] = "yy"
                         else:
 
                             row[1] = "Brak"
@@ -592,16 +592,16 @@ class Tool(object):
 
 
         # Use the function for each set of parameters
-        dodaj_pola(plik_wejsciowy, komorki_gsm, "LOC_NAME_GSM", "LOC_OBJ_GSM", "CELL_NAME_GSM","CELL_OBJ_GSM")
-        dodaj_pola(plik_wejsciowy, komorki_umts900, "LOC_NAME_UMTS_2100", "LOC_OBJ_UMTS_2100", "WCELL_NAME_UMTS_2100", "WCELL_OBJ_UMTS_2100")
-        dodaj_pola(plik_wejsciowy, komorki_umts2100, "LOC_NAME_UMTS_900", "LOC_OBJ_UMTS_900", "WCELL_NAME_UMTS_900", "WCELL_OBJ_UMTS_900")
-        dodaj_pola(plik_wejsciowy, komorki_lte800, "LOC_NAME_LTE_800", "LOC_OBJ_LTE_800", "LCELL_NAME_LTE_800", "LCELL_OBJ_LTE_800")
-        dodaj_pola(plik_wejsciowy, komorki_lte900, "LOC_NAME_LTE_900", "LOC_OBJ_LTE_900","LCELL_NAME_LTE_900", "LCELL_OBJ_LTE_900")
-        dodaj_pola(plik_wejsciowy, komorki_lte1800, "LOC_NAME_lTE_1800", "LOC_OBJ_lTE_1800","LCELL_NAME_lTE_1800", "LCELL_OBJ_lTE_1800")
-        dodaj_pola(plik_wejsciowy, komorki_lte2600, "LOC_NAME_LTE_2600", "LOC_OBJ_LTE_2600","LCELL_NAME_LTE_2600", "LCELL_OBJ_LTE_2600")
-        dodaj_pola(plik_wejsciowy, komorki_lte2100, "LOC_NAME_LTE_2100", "LOC_OBJ_LTE_2100","LCELL_NAME_LTE_2100", "LCELL_OBJ_LTE_2100")
-        dodaj_pola(plik_wejsciowy, komorki_5g2100, "LOC_NAME_5G_2100_DSS", "LOC_OBJ_5G_2100", "GCELL_NAME_5G_2100", "GCELL_OBJ_5G_2100")
-        dodaj_pola(plik_wejsciowy, komorki_5g3600, "LOC_NAME_5G_3600", "LOC_OBJ_5G_3600","GCELL_NAME_5G_3600", "GCELL_OBJ_5G_3600")
+        dodaj_pola(plik_wejsciowy,)
+        dodaj_pola(plik_wejsciowy,)
+        dodaj_pola(plik_wejsciowy, )
+        dodaj_pola(plik_wejsciowy, )
+        dodaj_pola(plik_wejsciowy, )
+        dodaj_pola(plik_wejsciowy, )
+        dodaj_pola(plik_wejsciowy, )
+        dodaj_pola(plik_wejsciowy, )
+        dodaj_pola(plik_wejsciowy,)
+        dodaj_pola(plik_wejsciowy,)
 
 #
 #         # TO SĄ TAKIE JAKIE MUSZA BYĆ -  fields_to_extract_zrodlo
@@ -640,55 +640,14 @@ class Tool(object):
 
 #         # Przykład użycia funkcji
 #         przepisz_wartosci_joina_do_nowych_pol(plik_wejsciowy, komorki_lte900,
-#                                               ["LOC_NAME", "LOC_OBJ", "LCELL_NAME", "LCELL_OBJ"],
-#                                               ["LOC_NAME_LTE_900", "LOC_OBJ_LTE_900", "LCELL_NAME_LTE_900", "LCELL_OBJ_LTE_900"])
+#                                               ["ss],
+#                                               [ss])
 
         przepisz_wartosci_joina_do_nowych_pol(plik_wejsciowy, komorki_gsm,
-                                     ["LOC_NAME", "LOC_OBJ", "CELL_NAME", "CELL_OBJ"],
-                                     ["LOC_NAME_GSM", "LOC_OBJ_GSM", "CELL_NAME_GSM", "CELL_OBJ_GSM"])
-
-        przepisz_wartosci_joina_do_nowych_pol(plik_wejsciowy, komorki_umts900,
-                                     ["LOC_NAME", "LOC_OBJ", "WCELL_NAME", "WCELL_OBJ"],
-                                     ["LOC_NAME_UMTS_2100", "LOC_OBJ_UMTS_2100", "WCELL_NAME_UMTS_2100",
-                                      "WCELL_OBJ_UMTS_2100"])
-
-        przepisz_wartosci_joina_do_nowych_pol(plik_wejsciowy, komorki_umts2100,
-                                     ["LOC_NAME", "LOC_OBJ", "WCELL_NAME", "WCELL_OBJ"],
-                                     ["LOC_NAME_UMTS_900", "LOC_OBJ_UMTS_900", "WCELL_NAME_UMTS_900",
-                                      "WCELL_OBJ_UMTS_900"])
-
-        przepisz_wartosci_joina_do_nowych_pol(plik_wejsciowy, komorki_lte800,
-                                     ["LOC_NAME", "LOC_OBJ", "LCELL_NAME", "LCELL_OBJ"],
-                                     ["LOC_NAME_LTE_800", "LOC_OBJ_LTE_800", "LCELL_NAME_LTE_800", "LCELL_OBJ_LTE_800"])
-
-        przepisz_wartosci_joina_do_nowych_pol(plik_wejsciowy, komorki_lte900,
-                                     ["LOC_NAME", "LOC_OBJ", "LCELL_NAME", "LCELL_OBJ"],
-                                     ["LOC_NAME_LTE_900", "LOC_OBJ_LTE_900", "LCELL_NAME_LTE_900", "LCELL_OBJ_LTE_900"])
-
-        przepisz_wartosci_joina_do_nowych_pol(plik_wejsciowy, komorki_lte1800,
-                                     ["LOC_NAME", "LOC_OBJ", "LCELL_NAME", "LCELL_OBJ"],
-                                     ["LOC_NAME_lTE_1800", "LOC_OBJ_lTE_1800", "LCELL_NAME_lTE_1800",
-                                      "LCELL_OBJ_lTE_1800"])
-
-        przepisz_wartosci_joina_do_nowych_pol(plik_wejsciowy, komorki_lte2600,
-                                     ["LOC_NAME", "LOC_OBJ", "LCELL_NAME", "LCELL_OBJ"],
-                                     ["LOC_NAME_LTE_2600", "LOC_OBJ_LTE_2600", "LCELL_NAME_LTE_2600",
-                                      "LCELL_OBJ_LTE_2600"])
-
-        przepisz_wartosci_joina_do_nowych_pol(plik_wejsciowy, komorki_lte2100,
-                                     ["LOC_NAME", "LOC_OBJ", "LCELL_NAME", "LCELL_OBJ"],
-                                     ["LOC_NAME_LTE_2100", "LOC_OBJ_LTE_2100", "LCELL_NAME_LTE_2100",
-                                      "LCELL_OBJ_LTE_2100"])
-
-
-        przepisz_wartosci_joina_do_nowych_pol(plik_wejsciowy, komorki_5g2100,
-                                     ["LOC_NAME", "LOC_OBJ", "GCELL_NAME", "GCELL_OBJ"],
-                                     ["LOC_NAME_5G_2100_DSS", "LOC_OBJ_5G_2100", "GCELL_NAME_5G_2100",
-                                      "GCELL_OBJ_5G_2100"])
-
-        przepisz_wartosci_joina_do_nowych_pol(plik_wejsciowy, komorki_5g3600,
-                                     ["LOC_NAME", "LOC_OBJ", "GCELL_NAME", "GCELL_OBJ"],
-                                     ["LOC_NAME_5G_3600", "LOC_OBJ_5G_3600", "GCELL_NAME_5G_3600", "GCELL_OBJ_5G_3600"])
+                                     ["xxJ"],
+                                     ["yy])
+x
+                                     ["zz])
 
 
         def przepisz_wartosci_joina_do_nowych_pol_extra(plik_wejsciowy, warstwa_zrodlowa, wynik_SpatialJoin):
