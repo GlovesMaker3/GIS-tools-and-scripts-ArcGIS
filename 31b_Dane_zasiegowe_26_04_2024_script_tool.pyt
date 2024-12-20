@@ -428,15 +428,15 @@ class Tool(object):
 
     def get_fields_to_keep(self, technology):
         if technology == 'GSM':
-            return ['OBJECTID_1', 'Shape', 'LOC_NAME', 'LOC_OBJ', 'LOC_CODE', 'SITE_NAME', 'SITE_OBJ', 'SITE_CODE', 'CELL_NAME', 'CELL_OBJ', 'CELL_CODE', 'LAC', 'BAND', 'BCCH_CHAN', 'BCC', 'NCC', 'Shape_Length', 'Shape_Area', 'styl']
+            return ['OBJECTID_1', ]
         elif technology == 'UMTS':
-            return ['OBJECTID_1', 'Shape', 'LOC_NAME', 'LOC_OBJ', 'LOC_CODE', 'WSITE_NAME', 'WSITE_OBJ', 'WSITE_ID', 'WCELL_NAME', 'WCELL_OBJ', 'WCELL_CODE', 'LAC', 'BAND', 'PSC', 'Shape_Length', 'Shape_Area', 'styl']
+            return ['OBJECTID_1', ]
         elif technology == 'LTE':
-            return ['OBJECTID_1', 'Shape', 'LOC_OBJ', 'LOC_CODE', 'LSITE_NAME', 'LSITE_OBJ', 'LSITE_ID', 'LCELL_NAME', 'LCELL_OBJ', 'LCELL_ID', 'NAME', 'PCI', 'Shape_Length', 'Shape_Area', 'styl']
+            return ['OBJECTID_1', ]
         elif technology == "DSS":
-            return ['OBJECTID_1', 'Shape', 'LOC_OBJ', 'LOC_CODE', 'GSITE_NAME', 'GSITE_OBJ', 'GSITE_ID', 'GCELL_NAME', 'GCELL_OBJ', 'GCELL_ID', 'LTE2100_SHARED', 'LCELL_NAME', 'LOC_NAME', 'Shape_Length', 'Shape_Area', 'styl']
+            return ['OBJECTID_1', ]
         elif technology == "CBAND":
-            return ['OBJECTID_1', 'Shape', 'LOC_OBJ', 'LOC_CODE', 'GSITE_NAME', 'GSITE_OBJ', 'GSITE_ID', 'GCELL_NAME', 'GCELL_OBJ', 'GCELL_ID', 'NAME', 'PCI', 'Shape_Length', 'Shape_Area', 'styl']
+            return ['OBJECTID_1', ]
         else:
             return []
 
